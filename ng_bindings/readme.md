@@ -1,13 +1,5 @@
-# CIDM 4385
-  These projects will be created using Angular 1
-
-1/23/2017 - Project Created
-
-[Angularjs guide](https://docs.angularjs.org/guide)
-
-## Conversion Program
+## Converter App
 **Project Started:** 1/30/2017
-**Github Repo name:** SP17_Angularjs
 
 ### Dependencies
 * Angularjs

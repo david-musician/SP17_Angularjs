@@ -237,16 +237,10 @@ unitConverter.controller('UnitConverterController', [
         $scope.$watch('ucc.selected_convert_mass_units', massConvertUpdate);
         $scope.$watch('ucc.selected_convert_length_units', lengthConvertUpdate);
         
-        // Selected Units: Original
+        // Selected Units
         ucc.selected_original_volume_units = ucc.volume_units[0];
         ucc.selected_original_mass_units = ucc.mass_units[0];
         ucc.selected_original_length_units = ucc.length_units[0];
-        
-        /* Selected Units: Convert
-        ucc.selected_convert_volume_units = ucc.volume_units[0];
-        ucc.selected_convert_mass_units = ucc.mass_units[0];
-        ucc.selected_convert_length_units = ucc.length_units[0];
-        */
         
         // Behaviors
         
