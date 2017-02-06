@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app = "RestaurantCalculator">
+	<head>
+		<meta charset="utf-8">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+		<!-- <script src = "../angular/angular.min.js"></script> -->
+		
+		<script src="app.js"></script>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">  -->
+	</head>
+	<body>
+	    <div class="container">
+	        <h1></h1>
+	        <div ng-controller="RestaurantCalculatorController as rcc">
+	            <h1>Restaurant Calculator</h1>
+	            <p>Cost of the meal:
+	                $<input type="text" ng-model="rcc.bill"  id="Total_Bill" name="value" placeholder="Enter amount" />
+	            </p>
+	            <p>Select your state:
+                    <select ng-model="rcc.selectedState"
+                        ng-options="state.name for state in rcc.states"
+                        ng-change="showState()"></select>
+	            </p>
+	            <p>Select a tip amount:
+	                <select ng-model="rcc.selectedTipAmount"
+                        ng-options="tip.name for tip in rcc.tipAmount"
+                        ng-change="showTip()"></select>
+	            </p>
+                <p><b>Cost of the meal:</b> <span ng-bind="rcc.bill | currency"></span></p>
+                <p><b>State:</b> <span ng-bind="rcc.selectedState.name"></span></p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;<b><span ng-bind="rcc.selectedState.name"></span> sales tax:</b> <span ng-bind="rcc.readableStateTax"></span>%</p>
+                <p><b>Tip:</b> <span ng-bind="rcc.selectedTipAmount.name"></span></p>
+                <button ng-click="rcc.calculateTotalBill()">Calculate</button>
+                <hr>
+                <h4><b>Total bill:</b> <span ng-bind="rcc.totalBill | currency"></span></h4>
+            </div>
+            <!--
+            <div ng-controller="darkskyTestController">
+                <p>
+                Current Conditions: <br />
+                Temperature: {{ forecast.temperature }} F <br />
+                Dewpoint: {{ forecast.dewPoint }} F <br />
+                Humidity: {{ forecast.humidity }} <br />
+                Wind: {{forecast.windBearing}} at {{forecast.windSpeed}} <br />
+                Cloud cover: {{ forecast.cloudCover }}% <br />
+                Ozone: {{ forecast.ozone }} ppm <br />
+                Chance of Precipitation: {{ forecast.precipProbability }}% <br />
+                Nearest Storm Direction: {{forecast.nearestStormBearing}} Distance: {{forecast.nearestStormDistance}} mi<br />
+                </p>
+                <!--<script>
+                var skycons = new Skycons();
+                
+                // if you're using the Forecast API, you can also supply
+                // strings: "partly-cloudy-day" or "rain".
+                skycons.set("ikon", "{{ forecast.icon }}");
+                
+                // start animation!
+                skycons.play();
+                
+                </script>--
+            </div>-->
+        </div>
+	</body>
+</html>

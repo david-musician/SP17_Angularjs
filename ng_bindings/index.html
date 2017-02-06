@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html ng-app="UnitConverter">
+    <head>
+        <link rel="stylesheet" href="bootstrap.min.css">
+    </head>
+    <body>
+        <!-- Test div --
+        <div ng-controller="Test">
+            <p>Selected item is : {{selectedItem}}</p>
+            <p> age of selected item is : {{selectedItem.age}}</p>
+            <select ng-model="selectedItem" ng-options="item.name group by item.age for item in items track by item.name"></select>
+        </div>
+        <!-- End of test div -->
+        <div class="container" ng-controller="UnitConverterController as ucc">
+            <h1>Converter App</h1>
+            <h2>Volume</h2>
+            
+            <div>
+                
+                Convert
+                
+                <input type="text" ng-model="ucc.metricVolumeValue"  id="Volume_Value" name="value" placeholder="Enter amount" />
+                
+                <select ng-model="ucc.selected_metric_volume_units"
+                        ng-options="unit.unit group by unit.type for unit in ucc.metric_volume_units"
+                        ng-change="ucc.showSelectedUnit()"></select>
+                
+                &nbsp; to &nbsp;
+                
+                <select ng-model="ucc.selected_imperial_volume_units"
+                        ng-options="unit.unit for unit in ucc.imperial_volume_units"
+                        ng-change="ucc.showSelectedUnit()"></select>
+                
+                <!-- Final select test --
+                <br><br><br>
+                <select ng-model="ucc.selected_metric_volume_units"
+                        ng-options="unit as ucc.metric_volume_units.unit for unit in ucc.metric_volume_units track by ucc.metric_volume_units.id"></select>
+                -->
+                
+                <div>
+                    <p>Selected metric unit is: <span ng-bind="ucc.selected_metric_volume_units.unit"></span></p>
+                </div>
+                <div>
+                    <p>Selected imperial unit is: <span ng-bind="ucc.selected_imperial_volume_units.unit"></span></p>
+                </div>
+                <div>
+                    <p>Metric object properties: {{ucc.selected_metric_volume_units}}</p>
+                    <p>Imperial object properties: {{ucc.selected_imperial_volume_units}}</p>
+                    <!--
+                    <p>Selected unit id is: {{ucc.selected_metric_volume_units.id}}</p>
+                    <p>Selected unit code: {{ucc.selected_metric_volume_units.unit_code}}</p>
+                    -->
+                </div>
+                <!--
+                <select>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                </select>
+                -->
+            </div>
+            <br>
+            
+            <!--
+            <div>
+                <input type="text" ng-model="" placeholder="" />
+            </div>
+            -->
+            
+            <!--
+            <div ng-hide=""></div>
+            -->
+            
+            <h2>Weights</h2>
+            <div>
+                
+                Convert
+                
+                <input type="text" ng-model="ucc.metricWeightValue"  id="Weight_Value" name="value" placeholder="Enter amount" />
+                
+                <select ng-model="ucc.selected_metric_weight_units"
+                        ng-options="ucc.metric_weight_units.unit group by ucc.metric_weight_units.type for unit in ucc.metric_weight_units"
+                        ng-change="ucc.showSelectedUnit()"></select>
+                
+                &nbsp; to &nbsp;
+                
+                <select ng-model="ucc.selected_imperial_weight_units"
+                        ng-options="ucc.imperial_weight_units.unit for unit in ucc.imperial_weight_units"
+                        ng-change="ucc.showSelectedUnit()"></select>
+                
+                <div>
+                    <p>Selected metric unit is: <span ng-bind="ucc.selected_metric_weight_units.unit"></span></p>
+                </div>
+                <div>
+                    <p>Selected imperial unit is: <span ng-bind="ucc.selected_imperial_weight_units.unit"></span></p>
+                </div>
+                <div>
+                    <p>Metric object properties: {{ucc.selected_metric_weight_units}}</p>
+                    <p>Imperial object properties: {{ucc.selected_imperial_weight_units}}</p>
+                </div>
+            </div>
+            <br>
+            
+            <h2>Masses</h2>
+            <div>
+                
+                Convert
+                
+                <input type="text" ng-model="ucc.metricMassValue"  id="Mass_Value" name="value" placeholder="Enter amount" />
+                
+                <select ng-model="ucc.selected_metric_volume_units"
+                        ng-options="ucc.metric_volume_units.unit group by ucc.metric_volume_units.type for unit in ucc.metric_volume_units"
+                        ng-change="ucc.showSelectedUnit()"></select>
+                
+                &nbsp; to &nbsp;
+                
+                <select ng-model="ucc.selected_metric_volume_units"
+                        ng-options="ucc.metric_volume_units.unit for unit in ucc.metric_volume_units"
+                        ng-change="ucc.showSelectedUnit()"></select>
+                
+                <div>
+                    <p>Selected metric unit is: <span ng-bind="ucc.selected_metric_weight_units.unit"></span></p>
+                </div>
+                <div>
+                    <p>Selected imperial unit is: <span ng-bind="ucc.selected_imperial_weight_units.unit"></span></p>
+                </div>
+                <div>
+                    <p>Metric object properties: {{ucc.selected_metric_weight_units}}</p>
+                    <p>Imperial object properties: {{ucc.selected_imperial_weight_units}}</p>
+                </div>
+            </div>
+            <br>
+            
+            <h2>Lengths</h2>
+                        <div>
+                
+                Convert
+                
+                <input type="text" ng-model="ucc.metricLengthValue"  id="Length_Value" name="value" placeholder="Enter amount" />
+                
+                <select ng-model="ucc.selected_metric_volume_units"
+                        ng-options="ucc.metric_volume_units.unit group by ucc.metric_volume_units.type for unit in ucc.metric_volume_units"
+                        ng-change="ucc.showSelectedUnit()"></select>
+                
+                &nbsp; to &nbsp;
+                
+                <select ng-model="ucc.selected_metric_volume_units"
+                        ng-options="ucc.metric_volume_units.unit for unit in ucc.metric_volume_units"
+                        ng-change="ucc.showSelectedUnit()"></select>
+                
+                <div>
+                    <p>Selected metric unit is: <span ng-bind="ucc.selected_metric_weight_units.unit"></span></p>
+                </div>
+                <div>
+                    <p>Selected imperial unit is: <span ng-bind="ucc.selected_imperial_weight_units.unit"></span></p>
+                </div>
+                <div>
+                    <p>Metric object properties: {{ucc.selected_metric_weight_units}}</p>
+                    <p>Imperial object properties: {{ucc.selected_imperial_weight_units}}</p>
+                </div>
+            </div>
+            
+            <script src="angular.min.js"></script>
+            <script src="app.js"></script>
+        </div>
+    </body>
+</html>

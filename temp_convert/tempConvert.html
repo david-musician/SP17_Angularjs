@@ -1,0 +1,117 @@
+<!doctype html>
+<html ng-app = "ngTempConverter">
+	<head>
+		<meta charset = "utf-8">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+		<!-- <script src = "../angular/angular.min.js"></script> -->
+		
+		<script src = "tempConvert.js"></script>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">  -->
+	</head>
+	<body ng-controller = "convertController">
+		
+		<div class="container">
+		
+			<h1>Please enter the temperature:</h1>
+			
+			<input 	type = "text"
+					maxlength="5"
+					style = "width : 50px"
+					placeholder = "32"
+					name = "tempInput"
+					ng-model = "tempInput" />
+					
+			<br/>
+			
+			<h2>What unit are you converting from?</h2>
+			
+			<input 	type = "radio"
+					ng-model = "cSelected"
+					name = "lengthUnit"
+					value = "Celsius"
+					ng-click = "setCSelected" />
+					
+			Celsius
+			
+			<br />
+			
+			<input 	type = "radio"
+					ng-model = "fSelected"
+					name = "lengthUnit"
+					value = "Fahrenheit"
+					ng-click = "setFSelected" />
+			
+			Fahrenheit
+			
+			<br />
+			
+			<p>Value entered:<b> {{ tempInput }}&deg; {{ unitScale }} </b>=<b> {{ conversionResult }}&deg; {{ convertedUnitScale }}</b></p>
+			
+			<input  type = "button"
+					name = "convert"
+					value = "convert"
+					ng-click = "doConversion()" />
+					
+			<br><br><br>
+			
+			<!--<p>Unit selected:</p>
+			<div ng-show="cSelected">Celsius</div>
+			<div ng-show="fSelected">Fahrenheit</div>-->
+			<small><b><i>&#42;Note: you may have to refresh the page after doing a calculation or two to keep getting the correct result.</b></i></small>
+			
+			<!--
+			<h2>Alternatively,</h2>
+			
+			<div ng-controller = "ConverterController as cc">
+				Celsius: <input ng-model = "celsius">
+				<br><br>
+				Fahrenheit: <input ng-model = "fahrenheit">
+				<br><br>
+				<button ng-click = "cc.Randomizer()">Press</button>
+				<input type = "text" ng-model = "cc.randomNumber">
+				
+				<script>
+					var tempConvert = angular.module("TempConvert", []);
+					
+					tempConvert.controller("ConverterContoller", ["$scope",
+						function($scope) {
+							// All the stuff the controller should do will go in here
+							
+							// We need to hook up the controller to a variable to obtain its scope
+							var cc = this;
+							
+							// C and F
+							cc.celsius = 0;
+							cc.fahrenheit = 0;
+							cc.randomNumber = 0;
+							
+							cc.CtoF = function(temp){
+								return (temp * 1.8) + 32;
+							};
+							
+							cc.FtoC = function(temp){
+								return (temp * -32) / 1.8;
+							};
+							
+							cc.Randomizer = function(){
+								cc.randomNumber = Math.Round(Math.random() * 100);
+							};
+							
+							$scope.$watch('cc.celsius', update);
+							$scope.$watch('cc.fahrenheit', update);
+							
+							function update(){
+								cc.fahrenheit = cc.CtoF(cc.celsius);
+								cc.celsius = cc.FtoC(cc.fahrenheit);
+							}
+						}
+					]);
+				</script>
+			</div>
+			-->
+		</div>
+	</body>
+</html>

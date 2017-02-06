@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="angularability">
+    <head>
+        <title>Learn Angular</title>
+        
+        <!-- Bring in Bootstrap -->
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"> 
+        
+        <!-- Bring in Angular -->
+        <script src="../angular/angular.min.js"></script>
+        <!-- Other versions of Angular at https://code.angularjs.org/ -->
+        
+        <!-- Bring in custom Angular files 
+        <script src="index.js"></script>-->
+        <script>
+            var myApp = angular.module('angularability', []);
+
+            myApp.controller('indexController', ['$scope', function($scope){
+                $scope.greeting = 'Hola!';
+            }]);
+            
+            myApp.controller('indexController2', ['$scope', function($scope){
+                $scope.MakeItDouble = function(value){
+                    if (value == null)
+                    {
+                        value = 0;
+                    }
+                    return value * 2;
+                }
+            }]);
+        </script>
+    </head>
+    <body>
+        <div></div>
+            <p>Name: <input type="text" ng-model="name"></p>
+            <h1>Hello {{ name }}</h1>
+        </div>
+        <div>
+            <p>Enter a number: <input type="number" ng-model="x"></p>
+            <p>Enter another number to add: <input type="number" ng-model="y"></p>
+            <h1>The sum is {{ x + y }}</h1>
+        </div>
+        <div ng-controller="indexController">
+            {{ greeting }}
+        </div>
+        <div ng-controller="indexController2">
+            Your number <input type="number" ng-model="num"> times 2 is: {{ MakeItDouble(num) }}
+        </div>
+    </body>
+</html>

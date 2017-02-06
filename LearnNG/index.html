@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="angularability">
+    <head>
+        <script src="../angular/angular.min.js"></script>
+        <script src="index.js"></script>
+        <!-- Other versions of Angular at https://code.angularjs.org/ -->
+    </head>
+    <body>
+        <div></div>
+            <p>Name: <input type="text" ng-model="name"></p>
+            <h1>Hello {{ name }}</h1>
+        </div>
+        <br>
+        <br>
+        <div>
+            <p>Enter a number: <input type="number" ng-model="x"></p>
+            <p>Enter another number to add: <input type="number" ng-model="y"></p>
+            <h1>The sum is {{ x + y }}</h1>
+        </div>
+        <div ng-controller="indexController">
+            
+        </div>
+    </body>
+</html>
