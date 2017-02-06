@@ -7,19 +7,8 @@
 // The [] is a dependency list.
 
 //Also, we put angular.module("", []){} in a variable if we do NOT append the .controller
+/* global angular */
 var unitConverter = angular.module("UnitConverter", []);
-
-//test controller
-unitConverter.controller('Test', function($scope){
-    $scope.items = [
-        {name: 'one', age: 30 },
-        {name: 'two', age: 27 },
-        {name: 'three', age: 50 }
-    ];
-    
-    $scope.selectedItem = $scope.items[0];
-});
-//*/
 
 unitConverter.controller('UnitConverterController', [
     // This is middleware
@@ -30,332 +19,261 @@ unitConverter.controller('UnitConverterController', [
         // What are the attributes and behaviors that I need this to do?
         // Attributes
         
-        ucc.metricVolumeValue = 0;
-        ucc.metricWeightValue = 0;
-        ucc.metricMassValue = 0;
-        ucc.metricLengthValue = 0;
+        ucc.volumeValue = 0;
+        ucc.massValue = 0;
+        ucc.lengthValue = 0;
+        // Answer variables
+        ucc.volumeAnswerValue = 0;
+        ucc.massAnswerValue = 0;
+        ucc.lengthAnswerValue = 0;
         
-        ucc.metric_weight_units = [
+        ucc.mass_units = [
             {
                 id: 0,
                 unit: "Milligrams",
                 unit_code: "mg",
-                type: "metric"
+                type: "Metric"
             },
             {
                 id: 1,
                 unit: "Grams",
                 unit_code: "g",
-                type: "metric"
+                type: "Metric"
             },
             {
                 id: 2,
                 unit: "Kilograms",
                 unit_code: "kg",
-                type: "metric"
+                type: "Metric"
             },
             {
                 id: 3,
-                unit: "Tonnes",
+                unit: "Metric Tons",
                 unit_code: "l",
-                type: "metric"
+                type: "Metric"
             },
+            // Begin Imperial mass units
+            {
+                id: 4,
+                unit: "Ounces",
+                unit_code: "oz",
+                type: "Imperial"
+            },
+            {
+                id: 5,
+                unit: "Pounds",
+                unit_code: "lb",
+                type: "Imperial"
+            },
+            {
+                id: 6,
+                unit: "Stone",
+                unit_code: "stone",
+                type: "Imperial"
+            },
+            {
+                id: 7,
+                unit: "HundredWeights",
+                unit_code: "cwt",
+                type: "Imperial"
+            },
+            {
+                id: 8,
+                unit: "Long Tons",
+                unit_code: "uk",
+                type: "Imperial"
+            }
         ];
         
-        ucc.metric_mass_units = [
-            {
-                id: 0,
-                unit: "Milligrams",
-                unit_code: "mg",
-                type: "metric"
-            },
-            {
-                id: 1,
-                unit: "Grams",
-                unit_code: "g",
-                type: "metric"
-            },
-            {
-                id: 2,
-                unit: "Kilograms",
-                unit_code: "kg",
-                type: "metric"
-            },
-            {
-                id: 3,
-                unit: "Tonnes",
-                unit_code: "l",
-                type: "metric"
-            },
-        ];
-        
-        ucc.metric_volume_units =
+        ucc.volume_units =
         [
             {
                 id: 0,
                 unit: "Cubic Centimeters",
                 unit_code: "cm3",
-                type: "metric"
+                type: "Metric"
             },
             {
                 id: 1,
                 unit: "Cubic Decimeters",
                 unit_code: "dm3",
-                type: "metric"
+                type: "Metric"
             },
             {
                 id: 2,
                 unit: "Cubic Meters",
                 unit_code: "m3",
-                type: "metric"
+                type: "Metric"
             },
             {
                 id: 3,
                 unit: "Liters",
                 unit_code: "l",
-                type: "metric"
+                type: "Metric"
             },
             {
                 id: 4,
                 unit: "Hectoliters",
                 unit_code: "hl",
-                type: "metric"
+                type: "Metric"
+            },
+            // Begin Imperial volume Units
+            {
+                id: 5,
+                unit: "Cubic Inches",
+                unit_code: "in3",
+                type: "Imperial"
+            },
+            {
+                id: 6,
+                unit: "Cubic Feet",
+                unit_code: "ft3",
+                type: "Imperial"
+            },
+            {
+                id: 7,
+                unit: "Fluid Ounces",
+                unit_code: "fl oz",
+                type: "Imperial"
+            },
+            {
+                id: 8,
+                unit: "Pints",
+                unit_code: "pt",
+                type: "Imperial"
+            },
+            {
+                id: 9,
+                unit: "Gallon",
+                unit_code: "gal",
+                type: "Imperial"
             }
         ];
         
-        ucc.metric_length_units = [
+        ucc.length_units = [
             {
                 id: 0,
-                unit: "Milligrams",
-                unit_code: "mg",
-                type: "metric"
+                unit: "Millimeters",
+                unit_code: "mm",
+                type: "Metric"
             },
             {
                 id: 1,
-                unit: "Grams",
-                unit_code: "g",
-                type: "metric"
+                unit: "Centimeters",
+                unit_code: "cm",
+                type: "Metric"
             },
             {
                 id: 2,
-                unit: "Kilograms",
-                unit_code: "kg",
-                type: "metric"
+                unit: "Meters",
+                unit_code: "m",
+                type: "Metric"
             },
             {
                 id: 3,
-                unit: "Tonnes",
-                unit_code: "l",
-                type: "metric"
+                unit: "Kilometers",
+                unit_code: "km",
+                type: "Metric"
             },
-        ];
-        
-        // Begin imperial units
-        ucc.imperial_weight_units = [
-            {
-                id: 0,
-                unit: "Milligrams",
-                unit_code: "mg",
-                type: "metric"
-            },
-            {
-                id: 1,
-                unit: "Grams",
-                unit_code: "g",
-                type: "metric"
-            },
-            {
-                id: 2,
-                unit: "Kilograms",
-                unit_code: "kg",
-                type: "metric"
-            },
-            {
-                id: 3,
-                unit: "Tonnes",
-                unit_code: "l",
-                type: "metric"
-            },
-        ];
-        
-        ucc.imperial_mass_units = [
-            {
-                id: 0,
-                unit: "Milligrams",
-                unit_code: "mg",
-                type: "metric"
-            },
-            {
-                id: 1,
-                unit: "Grams",
-                unit_code: "g",
-                type: "metric"
-            },
-            {
-                id: 2,
-                unit: "Kilograms",
-                unit_code: "kg",
-                type: "metric"
-            },
-            {
-                id: 3,
-                unit: "Tonnes",
-                unit_code: "l",
-                type: "metric"
-            },
-        ];
-        
-        ucc.imperial_volume_units =
-        [
-            {
-                id: 0,
-                unit: "Cubic Centimeters",
-                unit_code: "cm3",
-                type: "metric"
-            },
-            {
-                id: 1,
-                unit: "Cubic Decimeters",
-                unit_code: "dm3",
-                type: "metric"
-            },
-            {
-                id: 2,
-                unit: "Cubic Meters",
-                unit_code: "m3",
-                type: "metric"
-            },
-            {
-                id: 3,
-                unit: "Liters",
-                unit_code: "l",
-                type: "metric"
-            },
+            // Begin Imperial length units
             {
                 id: 4,
-                unit: "Hectoliters",
-                unit_code: "hl",
-                type: "metric"
+                unit: "Inch",
+                unit_code: "in",
+                type: "Imperial"
+            },
+            {
+                id: 5,
+                unit: "Feet",
+                unit_code: "ft",
+                type: "Imperial"
+            },
+            {
+                id: 6,
+                unit: "Yard",
+                unit_code: "yd",
+                type: "Imperial"
+            },
+            {
+                id: 7,
+                unit: "Mile",
+                unit_code: "mi",
+                type: "Imperial"
             }
         ];
         
-        ucc.imperial_length_units = [
-            {
-                id: 0,
-                unit: "Milligrams",
-                unit_code: "mg",
-                type: "metric"
-            },
-            {
-                id: 1,
-                unit: "Grams",
-                unit_code: "g",
-                type: "metric"
-            },
-            {
-                id: 2,
-                unit: "Kilograms",
-                unit_code: "kg",
-                type: "metric"
-            },
-            {
-                id: 3,
-                unit: "Tonnes",
-                unit_code: "l",
-                type: "metric"
-            },
-        ];
-        
-        // Metric
-        function metricVolumeUpdate (){
-            console.log(ucc.selected_metric_volume_unit);
+        // Log the original unit selections
+        function volumeOriginalUpdate (){
+            console.log("Original unit:" + ucc.selected_original_volume_unit);
         }
         
-        function metricWeightUpdate (){
-            console.log(ucc.selected_metric_volume_unit);
+        function massOriginalUpdate (){
+            console.log("Original unit:" + ucc.selected_original_volume_unit);
         }
         
-        function metricMassUpdate (){
-            console.log(ucc.selected_metric_volume_unit);
+        function lengthOriginalUpdate (){
+            console.log("Original unit:" + ucc.selected_original_volume_unit);
         }
         
-        function metricLengthUpdate (){
-            console.log(ucc.selected_metric_volume_unit);
+        // Log the convert unit selections
+        function volumeConvertUpdate (){
+            console.log("Original unit:" + ucc.selected_original_volume_unit);
         }
         
-        // Imperial
-        function imperialVolumeUpdate (){
-            console.log(ucc.selected_metric_volume_unit);
+        function massConvertUpdate (){
+            console.log("Original unit:" + ucc.selected_original_volume_unit);
         }
         
-        function imperialWeightUpdate (){
-            console.log(ucc.selected_metric_volume_unit);
+        function lengthConvertUpdate (){
+            console.log("Original unit:" + ucc.selected_original_volume_unit);
         }
         
-        function imperialMassUpdate (){
-            console.log(ucc.selected_metric_volume_unit);
-        }
+        // Watch for changes
+        $scope.$watch('ucc.selected_original_volume_units', volumeOriginalUpdate);
+        $scope.$watch('ucc.selected_original_mass_units', massOriginalUpdate);
+        $scope.$watch('ucc.selected_original_length_units', lengthOriginalUpdate);
         
-        function imperialLengthUpdate (){
-            console.log(ucc.selected_metric_volume_unit);
-        }
+        $scope.$watch('ucc.selected_convert_volume_units', volumeConvertUpdate);
+        $scope.$watch('ucc.selected_convert_mass_units', massConvertUpdate);
+        $scope.$watch('ucc.selected_convert_length_units', lengthConvertUpdate);
         
-        // Metric
-        $scope.$watch('ucc.selected_metric_volume_units', metricVolumeUpdate);
-        $scope.$watch('ucc.selected_metric_weight_units', metricWeightUpdate);
-        $scope.$watch('ucc.selected_metric_mass_units', metricMassUpdate);
-        $scope.$watch('ucc.selected_metric_length_units', metricLengthUpdate);
-        // Imperial
-        $scope.$watch('ucc.selected_imperial_volume_units', imperialVolumeUpdate);
-        $scope.$watch('ucc.selected_imperial_weight_units', imperialWeightUpdate);
-        $scope.$watch('ucc.selected_imperial_mass_units', imperialMassUpdate);
-        $scope.$watch('ucc.selected_imperial_length_units', imperialLengthUpdate);
+        // Selected Units: Original
+        ucc.selected_original_volume_units = ucc.volume_units[0];
+        ucc.selected_original_mass_units = ucc.mass_units[0];
+        ucc.selected_original_length_units = ucc.length_units[0];
         
-        // Metric
-        ucc.selected_metric_volume_unit = ucc.metric_volume_units[0];
-        ucc.selected_metric_weight_unit = ucc.metric_weight_units[0];
-        ucc.selected_metric_mass_unit = ucc.metric_mass_units[0];
-        ucc.selected_metric_length_unit = ucc.metric_length_units[0];
-        // Imperial
-        ucc.selected_imperial_volume_unit = ucc.imperial_volume_units[0];
-        ucc.selected_imperial_weight_unit = ucc.imperial_weight_units[0];
-        ucc.selected_imperial_mass_unit = ucc.imperial_mass_units[0];
-        ucc.selected_imperial_length_unit = ucc.imperial_length_units[0];
+        /* Selected Units: Convert
+        ucc.selected_convert_volume_units = ucc.volume_units[0];
+        ucc.selected_convert_mass_units = ucc.mass_units[0];
+        ucc.selected_convert_length_units = ucc.length_units[0];
+        */
         
         // Behaviors
         
-        // Metric
-        ucc.showSelectedMVUnit = function(){
-            console.log(ucc.selected_metric_volume_unit.unit_name);
+        // Original values
+        ucc.showSelectedOriginalVolumeUnit = function(){
+            console.log("Original unit:" + ucc.selected_original_volume_unit.unit_name);
         };
         
-        ucc.showSelectedMWUnit = function(){
-            console.log(ucc.selected_metric_weight_unit.unit_name);
+        ucc.showSelectedOriginalMassUnit = function(){
+            console.log("Original unit:" + ucc.selected_original_mass_unit.unit_name);
         };
         
-        ucc.showSelectedMMUnit = function(){
-            console.log(ucc.selected_metric_mass_unit.unit_name);
+        ucc.showSelectedOriginalLengthUnit = function(){
+            console.log("Original unit:" + ucc.selected_original_length_unit.unit_name);
         };
         
-        ucc.showSelectedMLUnit = function(){
-            console.log(ucc.selected_metric_length_unit.unit_name);
+        // Convert values
+        ucc.showSelectedConvertVolumeUnit = function(){
+            console.log("Original unit:" + ucc.selected_convert_volume_unit.unit_name);
         };
         
-        // Imperial
-        ucc.showSelectedIVUnit = function(){
-            console.log(ucc.selected_imperial_volume_unit.unit_name);
+        ucc.showSelectedConvertMassUnit = function(){
+            console.log("Original unit:" + ucc.selected_convert_mass_unit.unit_name);
         };
         
-        ucc.showSelectedIWUnit = function(){
-            console.log(ucc.selected_imperial_weight_unit.unit_name);
-        };
-        
-        ucc.showSelectedIMUnit = function(){
-            console.log(ucc.selected_imperial_mass_unit.unit_name);
-        };
-        
-        ucc.showSelectedILUnit = function(){
-            console.log(ucc.selected_imperial_length_unit.unit_name);
+        ucc.showSelectedConvertLengthUnit = function(){
+            console.log("Original unit:" + ucc.selected_convert_length_unit.unit_name);
         };
     }
 ]);
