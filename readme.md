@@ -13,6 +13,8 @@
 
 [Github cheat sheet](https://www.git-tower.com/blog/git-cheat-sheet/)
 
+[How to push an existing Cloud9 project to GitHub](http://lepidllama.net/blog/how-to-push-an-existing-cloud9-project-to-github/)
+
 ## readme.md format
 
 ### Header

@@ -22,8 +22,8 @@ function lengthConvertUpdate (){
 The above code logs the changes the user makes in the dropdown menus
 
 ### Helpful links
-[ng-bind](https://docs.angularjs.org/api/ng/directive/ngBind)
-[Angularjs 1.6 Important Changes](https://toddmotto.com/angular-1-6-is-here)
+- [ng-bind](https://docs.angularjs.org/api/ng/directive/ngBind)
+- [Angularjs 1.6 Important Changes](https://toddmotto.com/angular-1-6-is-here)
 
 ### Known issues
 1. Critical issues - None

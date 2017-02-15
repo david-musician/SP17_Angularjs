@@ -319,23 +319,6 @@ var darkskyTestController = function($scope, $http){
        });
 };
 */
-/*
-var darkskyTestController = function($scope, $http, $sce){
-    $http.jsonp($sce.trustAsResourceUrl('https://api.darksky.net/forecast/6c8b305547beae413df14241f389aea7/34.9836398,-101.9306303' + '?callback=JSON_CALLBACK',
-    
-    // HAVE TO USE .then INSTEAD OF .success IN ANGULAR 1.6
-    
-        {jsonpCallbackParam: 'callback'}))
-        .success(function(response){
-            console.log(response);
-            $scope.forecast = response.currently;
-        })
-
-        .error(function(){
-            console.log("Oops, there's an error!");
-    });
-};
-*/
 
 angular.module("RestaurantCalculator", [])
     //.controller('darkskyTestController', darkskyTestController)

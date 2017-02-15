@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="NewAPI">
+    <head>
+        <meta charset="utf-8">
+        <!--<script src="angular.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        
+        <script src="app.js"></script>
+        
+        <link rel="stylesheet" href="bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div ng-controller="newAPIController as nac">
+                {{ greeting }}
+                <br>
+                {{ nac.gibblet }}
+            </div>
+            <div ng-controller="darkskyTestController">
+                <p>
+                Current Conditions: <br />
+                Temperature: {{ forecast.temperature }} F <br />
+                Dewpoint: {{ forecast.dewPoint }} F <br />
+                Humidity: {{ forecast.humidity }} <br />
+                Wind: {{forecast.windBearing}} at {{forecast.windSpeed}} <br />
+                Cloud cover: {{ forecast.cloudCover }}% <br />
+                Ozone: {{ forecast.ozone }} ppm <br />
+                Chance of Precipitation: {{ forecast.precipProbability }}% <br />
+                Nearest Storm Direction: {{forecast.nearestStormBearing}} Distance: {{forecast.nearestStormDistance}} mi<br />
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

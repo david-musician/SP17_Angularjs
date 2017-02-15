@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="LocalStorage">
+    <head>
+        <meta charset="utf-8">
+        
+        <!--<script type="javascript" src="angular.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+        
+        <script src="app.js"></script>
+        
+        <link rel="stylesheet" href="bootstrap.min.css">
+    </head>
+    <body class="container">
+        <div ng-controller="LocalStorageController as lsc">
+            <h2>Hello {{ lsc.name }}</h2>
+            <!--<span ng-model="">-->
+            <!--<p ng-bind></p>-->
+            <p>Given {{ lsc.rightOperand }} and {{ lsc.leftOperand }};</p>
+            <p>The product is {{ lsc.productNumber }}</p>
+            <br>
+            <p>Thing you got: <b>{{ lsc.meow }}</b></p>
+            <p>Timestamp 1: {{ lsc.timestamp }}</p>
+        </div>
+        <br>
+        <i>The space between the controllers.</i>
+        <br>
+        <br>
+        <div ng-controller="LibraryController as lc">
+            <h2>Hello {{ lc.name }}</h2>
+            <!--<p ng-bind></p>-->
+            <p>Given {{ lc.rightOperand }} and {{ lc.leftOperand }};</p>
+            <p>The sum is {{ lc.sumNumber }}</p>
+            <br>
+            <p>Thing you got: <b>{{ lc.meow }}</b></p>
+            <p>Timestamp 2: {{ lsc.timestamp }}</p>
+        </div>
+    </body>
+</html>
