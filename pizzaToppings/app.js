@@ -1,3 +1,5 @@
+/// Much of this code was adapted from Dr. Babb's President List example
+
 /* global angular */
 var toppingList = angular.module("PizzaToppings", []);
 
@@ -7,48 +9,84 @@ toppingList.controller("ToppingListController", ['$scope',
         var tlc = this;
         
         tlc.toppingName = "";
-        tlc.toppingCost = "";
+        tlc.toppingType = "";
         tlc.background = "emphasis";
-        tlc.presidents = [];
+        tlc.orders = [];
+        
+        tlc.topping = [
+            {
+                name: "Cheese",
+                value: 0
+            },
+            {
+                name: "Pepperoni",
+                value: 1.99
+            },
+            {
+                name: "Vegetables",
+                value: 2.25
+            },
+            {
+                name: "Anchovies",
+                value: 20
+            }
+        ];
+        
+        tlc.toppingType = tlc.topping[0];
+        
+        tlc.totalCost = function(){
+            tlc.totalCost = (parseFloat(tlc.toppingCost) + tlc.pizzaCost);
+            console.log(tlc.totalCost);
+        };
         
         tlc.emphasis = function(status, $event){
-            var el = $event.target.id;
+            //var el = $event.target.id;
             
             if(status){
-                console.log("enter: " + el);
+                //console.log("enter: " + el);
                 tlc.background = "emphasis";
-                console.log(tlc.background);
+                //console.log(tlc.background);
             } else {
-                console.log("exit: " + el);
+                //console.log("exit: " + el);
                 tlc.background = "deemphasis";
-                console.log(tlc.background);
+                //console.log(tlc.background);
             }
         };
         
         tlc.remove = function($index){
-            tlc.presidents = tlc.latestData();
-            tlc.presidents.splice($index, 1);
-            return ToppingStorageService.setData('my-storage', angular.toJson(tlc.presidents));
+            tlc.orders = tlc.latestData();
+            tlc.orders.splice($index, 1);
+            return ToppingStorageService.setData('my-storage', angular.toJson(tlc.orders));
         };
         
         tlc.latestData = function(){
             return ToppingStorageService.getData('my-storage');
         };
         
-        tlc.update = function(pname, pyear){
-            tlc.presidents = tlc.latestData();
-            if(tlc.presidents == null){
-                tlc.presidents = [];
+        //tlc.create = function(tnumber, tname, topping, tcost)
+        tlc.create = function(tname, topping){
+            if (tname != null && tname != "" && topping != null){
+                tlc.error = false;
+                tlc.orders = tlc.latestData();
+                //tlc.number = Math.random() * 1000000;
+                console.log(tlc.number);
+                if(tlc.orders == null){
+                    tlc.orders = [];
+                }
+                // Mapping values
+                var order = {name: tname, topping: topping};
+                //var order = {number: tnumber, name: tname, topping: topping, cost: tcost};
+                console.log(angular.toJson(order));
+                tlc.orders.push(order);
+                return ToppingStorageService.setData('my-storage', angular.toJson(tlc.orders));
+            } else {
+                tlc.error = true;
             }
-            var president = {name: pname, year: pyear};
-            console.log(angular.toJson(president));
-            tlc.presidents.push(president);
-            return ToppingStorageService.setData('my-storage', angular.toJson(tlc.presidents));
         };
         
         // Check to see if null
-        if(tlc.presidents != null){
-            tlc.presidents = tlc.latestData();
+        if(tlc.orders != null){
+            tlc.orders = tlc.latestData();
         } else {
             console.log("crikey");
         }

@@ -6,12 +6,36 @@ Description - This app will allow the user to select toppings on a pizza.
 1. This app will use services and factory methods
 2. This app will also use local storage
 3. This app will use Bootstrap
-2. Code snippets
-2. Explanations of code
+
+The following code is the factory service that is used to store the pizza orders.
+``` JavaScript
+toppingList.factory("ToppingStorageService", function($window, $rootScope){
+    angular.element($window).on('storage', function(event){
+        if (event.key === 'my-storage'){
+            $rootScope.$apply();
+        }
+    });
+    
+    return {
+        setData: function(key, val){
+            $window.localStorage && $window.localStorage.setItem(key, val);
+            return this;
+        },
+        getData: function(key){
+            var val = $window.localStorage && $window.localStorage.getItem(key);
+            
+            var data = angular.fromJson(val);
+            
+            return data;
+        }
+    };
+});
+```
 
 ### Helpful links
-1. Links that help explain the project
-2. Links that helped solve problems in the project
+1. [Styling idea](http://bootsnipp.com/snippets/featured/table-row-count-and-sortable)
+3. [How to change a class on mouseover](http://stackoverflow.com/questions/16923111/change-class-on-mouseover-in-directive)
+4. [How to add multiple classes to ng-class](http://stackoverflow.com/questions/18871277/adding-multiple-class-using-ng-class)
 
 ### Known issues
 1. Critical issues - None
@@ -20,8 +44,8 @@ Description - This app will allow the user to select toppings on a pizza.
 4. Minor issues - None
 
 ### Changelog
-1. Features added
-2. Bugs fixed
+1. Features added - None
+2. Bugs fixed - None
 
 ### TODO
 1. Create an AngularJS 1 application that lets you take Pizza orders and save an array of these pizza orders in Local Storage.

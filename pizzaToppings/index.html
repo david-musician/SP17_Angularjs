@@ -1,48 +1,85 @@
 <!DOCTYPE html>
 <html ng-app="PizzaToppings">
 	<head>
+		<title>Pizza Topping List</title>
 		<meta charset="utf-8">
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-		<!-- <script src = "../angular/angular.min.js"></script> -->
+		<link rel="stylesheet"
+			  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+			  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+			  crossorigin="anonymous">
 		
-		<script src="app.js"></script>
-		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<!-- <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">  -->
 	</head>
-	<body>
+	<body ng-controller="ToppingListController as tlc">
 	    <div class="container">
-	        <h1></h1>
-	        <div ng-controller="PizzaToppings as pt">
-            </div>
-            <div class="container">
-		        <h1>Local Storage Demo</h1>
-		        <h3>List of Presidents of the United States</h3>
-		        <ul ng-if="mc.presidents != null">
-		            <li ng-repeat="president in mc.presidents"
-		                ng-mouseenter="mc.emphasis(true, $event)"
-		                ng-mouseleave="mc.emphasis(false, $event)"
-		                ng-class="mc.background"
-		                id="president{{$index}}">
-		                
-		                <!-- NOTE: the property names are not the same as the bound variables --
-		                {{president.name}} ({{president.year}})
-		                [<label for="remove">Remove</label>
-		                <input name="remove" type="checkbox" ng-click="mc.remove($index)">]
-		                <!-- Put your editing controls here -->
-		            </li>
-		        </ul>
-		        <label for="presidentName">President Name</label>
-		        <input name="presidentName" type="text" ng-model="mc.presidentName" />
-		        <br>
-		        <br>
-		        <label for="presidentYear">President Year</label>
-		        <input name="presidentYear" type="text" ng-model="mc.presidentYear" />
-		        <br>
-		        <br>
-		        <input type="button" value="update" ng-click="mc.update(mc.presidentName, mc.presidentYear)" />
-        	</div>
-        </div>
+	        <h1>Pizza Toppings App</h1>
+	        <h3>List of Orders with Various Toppings</h3>
+			<label for="toppingName">Customer Name:</label>
+	        <input name="toppingName" type="text" ng-model="tlc.toppingName" />
+	        <br><br>
+	        <label for="toppingType">Select a pizza topping:</label>
+            <select name="toppingType"
+            		ng-model="tlc.toppingType"
+                	ng-options="topping.name for topping in tlc.topping"
+                	ng-change="order.totalCost()"></select>
+            
+	        <!--<label for="toppingCost">Topping Cost: </label><span ng-bind="order.cost | currency"></span>
+	        <br><br>
+	        <label>Pizza Cost:</label>{{order.totalCost() | currency}}-->
+	        <span style="color: red" ng-show="tlc.error"><br><br>Please enter a customer name.</span>
+	        <br><br>
+	        <input type="button"
+	        	   class="btn-success"
+	        	   value="Add Order"
+	        	   ng-click="tlc.create(tlc.toppingName, tlc.toppingType)" />
+	                
+	                <!-- Put your editing controls here -->
+			<table class="table" ng-if="tlc.orders != null">
+            	<thead>
+                    <tr>
+                        <th>
+                            <!--Order Number - -->Customer Name
+                        </th>
+                        <th>
+                            Topping
+                        </th>
+                        <!--<th>
+                        	Cost
+                        </th>-->
+                        <th>
+                            Remove
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<!-- Styling idea from http://bootsnipp.com/snippets/featured/table-row-count-and-sortable -->
+                    <tr ng-repeat="order in tlc.orders"
+		                id="order{{$index}}"
+    	                ng-mouseenter="tlc.emphasis(hover = true, $event)"
+                    	ng-mouseleave="tlc.emphasis(hover = false, $event)"
+                    	ng-class="{active : !hover, success : hover}">
+                    	<!-- How to perform a calculation so that odd rows are
+                    		 not styled and even rows are styled with 'active'?
+                    		 -->
+                        <td>
+                            <!--{{order.number}} - -->{{order.name}}
+                        </td>
+                        <td>
+                            {{order.topping.name}}
+                        </td>
+                        <!--<td>
+                        	{{order.cost | currency}}
+                        </td>-->
+                        <td>
+			                <input name="remove"
+			                	   type="checkbox"
+			                	   ng-click="tlc.remove($index)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    	</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+		<script src="app.js"></script>
 	</body>
 </html>

@@ -66,6 +66,7 @@ saving.factory("NewService", function($window, $rootScope){
     
     var thing1 = "";
     var thing2 = "";
+    var timestamp = null;
     
     // The below code is better.
     return {
