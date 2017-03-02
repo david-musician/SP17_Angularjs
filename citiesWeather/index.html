@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="ForecastApp">
+    <head>
+        <meta charset="utf-8">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body>
+        <div ng-controller="WeatherServiceController as wsc">
+            <p>Latitude: {{wsc.selected_lat}}</p>
+            <p>Longitude: {{wsc.selected_long}}</p>
+            <p><img src="{{wsc.google_static_maps_url}}" /></p>
+        </div>
+    </body>
+</html>

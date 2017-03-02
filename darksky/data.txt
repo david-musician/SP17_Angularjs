@@ -1,0 +1,7 @@
+[
+    {
+        "firstname" : "Daniel",
+        "lastname" : "Maratta",
+        "class" : "CIDM4385"
+    }
+]

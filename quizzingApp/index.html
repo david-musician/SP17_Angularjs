@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html ng-app="QuizzingApp">
+    <head>
+        <meta charset="utf-8">
+        
+        <!-- Bring in Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div ng-controller="QuizzingController as qc">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#quizNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>                        
+                            </button>
+                            <a class="navbar-brand" href="#">Quizzing App</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="quizNavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="" ng-click="qc.home()">Home</a></li>
+                                <li><a href="" ng-click="qc.quizStudents()">Quiz Students</a></li>
+                                <li><a href="" ng-click="qc.studentList()">Student List</a></li>
+                                <li><a href="" ng-click="qc.questionList()">Question List</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <h1 class="text-center">Quizzing app</h1>
+    			<div ng-show="qc.homeView">
+    			    <p>This is the home view</p>
+    			    <button ng-click="RandomService.getThing()">Random Button</button>
+    			    {{qc.meow}}
+    			</div>
+    			<div ng-show="qc.quizView">
+    			    <p>This is the Quiz view</p>
+    			</div>
+	            <div ng-show="qc.studentView">
+	                <!--<button class="btn btn-success">Create Student</button>-->
+        	        <table class="table table-striped" ng-if="qc.student != null">
+                    	<thead>
+                            <tr>
+                                <th>
+                                    Student ID
+                                </th>
+                                <th>
+                                    First Name
+                                </th>
+                                <th>
+                                    Last Name
+                                </th>
+                                <th>
+                                    Class
+                                </th>
+                                <th>
+                                    Score
+                                </th>
+                                <th>
+                                    Grade
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        	<!-- Styling idea from http://bootsnipp.com/snippets/featured/table-row-count-and-sortable -->
+                            <tr ng-repeat="student in qc.student"
+        		                id="student{{$index}}"
+            	                ng-mouseenter="qc.emphasis(hover = true, $event)"
+                            	ng-mouseleave="qc.emphasis(hover = false, $event)">
+                                <td>
+                                    {{student.id}}
+                                </td>
+                                <td>
+                                    {{student.firstname}}
+                                </td>
+                                <td>
+        			                {{student.lastname}}
+                                </td>
+                                <td>
+        			                {{student.class}}
+                                </td>
+                                <td>
+        			                {{student.score}} out of {{student.questionsAsked}} correct
+                                </td>
+                                <td>
+        			                {{student.grade}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+    	        </div>
+    	        <div ng-show="qc.questionView">
+    	            <!--<button class="btn btn-success">Create Question</button>-->
+    			    <table class="table table-striped" ng-if="qc.question != null">
+                    	<thead>
+                            <tr>
+                                <th>
+                                    Question ID
+                                </th>
+                                <th>
+                                    Question
+                                </th>
+                                <th>
+                                    Answer
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        	<!-- Styling idea from http://bootsnipp.com/snippets/featured/table-row-count-and-sortable -->
+                            <tr ng-repeat="question in qc.question"
+        		                id="question{{$index}}"
+            	                ng-mouseenter="qc.emphasis(hover = true, $event)"
+                            	ng-mouseleave="qc.emphasis(hover = false, $event)">
+                                <td>
+                                    {{question.id}}
+                                </td>
+                                <td>
+                                    {{question.question}}
+                                </td>
+                                <td>
+        			                {{question.answer}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+    			</div>
+	        </div>
+        </div>
+        
+        <!-- Bring in Angular -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+        
+        <!-- Bring in the app -->
+        <script src="app.js"></script>
+    </body>
+</html>
