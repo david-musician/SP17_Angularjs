@@ -1,8 +1,8 @@
 # Quizzing App
 * Date Created - 2/27/2017
 * This app will have an array of students and an array of questions and allow a
-* student and question to be paired randomly. The user will then be able to
-* save a student's score and the app will calculate the student grades.
+student and question to be paired randomly. The user will then be able to
+save a student's score and the app will calculate the student grades.
 
 ### Features
 1. AngularJS view
