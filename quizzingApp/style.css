@@ -4,3 +4,15 @@
 .deemphasis {
     background-color: white
 }
+
+/* Gradient transparent - color - transparent */
+hr.fancy {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(185, 185, 185, 0), rgba(185, 185, 185, 0.75), rgba(185, 185, 185, 0));
+}
+
+/* faint text */
+.faint {
+    color: #b9b9b9;
+}

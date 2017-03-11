@@ -4,6 +4,20 @@ angular.module("ForecastApp", [])
     ["$scope", "$http", "GeoLocationService",
     function($scope, $http, GeoLocationService){
         
+        /* Find my own icons to display
+         * Dr. Babb doesn't care if we use someone else's code to get the
+         * directives, as long as we credit the source.
+         */
+        
+        /* Instructions: Do it myself an prove that I can get it to work.
+         * THEN comment it out and do it
+         */
+         
+         /* We are going to be doing the DarkSky method
+          * We can (should) use 
+          */
+          
+          // http://codereview.stackexchange.com/questions/93799/angular-filter-to-format-temperature
         var wsc = this;
         
         wsc.selected_lat = 0;

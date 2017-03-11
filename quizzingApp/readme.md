@@ -37,8 +37,9 @@ Code for the Saving Service factory
 ```
 
 ### Helpful links
-1. [Difference between MouseEnter and MouseOver:](http://jsfiddle.net/ZCWvJ/7/)
+1. [Difference between MouseEnter and MouseOver](http://jsfiddle.net/ZCWvJ/7/)
 2. [Building a collapsible navigation bar using Bootstrap](https://www.w3schools.com/bootstrap/bootstrap_navbar.asp)
+3. [Special hr styling](https://css-tricks.com/examples/hrs/)
 
 ### Known issues
 1. Critical issues - none

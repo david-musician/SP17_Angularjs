@@ -5,6 +5,10 @@
         
         <!-- Bring in Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
+        <!-- Bring in custom css -->
+        <link rel="stylesheet" href="style.css">
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
@@ -33,12 +37,18 @@
                 </nav>
                 <h1 class="text-center">Quizzing app</h1>
     			<div ng-show="qc.homeView">
-    			    <p>This is the home view</p>
-    			    <button ng-click="RandomService.getThing()">Random Button</button>
-    			    {{qc.meow}}
+    			    <h3>Welcome to the quiz app!</h3>
+    			    <p>This app has an array of students and an array of 
+    			    questions and allows a student and question to be paired 
+                    randomly. The user is able to save a student's score and 
+                    the app can calculate the student's grades.</p>
+    			    <p>Tap on a tab to get started!</p>
     			</div>
     			<div ng-show="qc.quizView">
     			    <p>This is the Quiz view</p>
+    			    <button ng-click="RandomService.getThing()">Random Button</button>
+    			    <br><br>
+    			    {{qc.meow}}
     			</div>
 	            <div ng-show="qc.studentView">
 	                <!--<button class="btn btn-success">Create Student</button>-->
@@ -128,6 +138,11 @@
                         </tbody>
                     </table>
     			</div>
+    			<hr class="fancy">
+    			<div class="text-center faint">
+    			    <small><i>&copy; Daniel Maratta 2017. All Rights Reserved.</i></small>
+    			</div>
+    			<hr class="fancy">
 	        </div>
         </div>
         
