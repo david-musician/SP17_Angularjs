@@ -36,10 +36,29 @@
 2. Links that helped solve problems in the project
 
 ### Known issues
-1. Critical issues
-2. Serious issues
-3. Moderate issues
-4. Minor issues
+#### Learned how to create and push to a Github branch:
+**http://stackoverflow.com/questions/1519006/how-do-you-create-a-remote-git-branch**
+#### Secondary sources:
+* https://help.github.com/articles/pushing-to-a-remote/
+* https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches
+* https://www.atlassian.com/git/tutorials/syncing#git-push
+* http://stackoverflow.com/questions/5802426/git-error-src-refspec-master-does-not-match-any
+* https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
+* http://stackoverflow.com/questions/2745076/what-are-the-differences-between-git-commit-and-git-push
+* https://help.github.com/articles/changing-a-remote-s-url/
+* http://stackoverflow.com/questions/820178/how-do-you-push-just-a-single-git-branch-and-no-other-branches
+
+You must get from this:
+```
+david_musician:~/workspace (master) $ git checkout -b newIonic
+M       jcidm_4385/ionic-starter-sidemenu
+Switched to a new branch 'newIonic'
+```
+to this: 
+
+```
+david_musician:~/workspace (newIonic) $ git push git@github.com:david-musician/SP17_Angularjs.git newIonic
+```
 
 ### Changelog
 1. Features added

@@ -26,9 +26,9 @@ This project references: [https://github.com/ahuimanu/iscap-ionic-workshop](http
 ## readme.md format
 
 ### Header
-1. Title
-2. March 20th, 2017 - Project created
-3. Description
+1. Tutorial Project
+2. April 2nd, 2017 - Project created
+3. This is a tutorial app that makes projects and tasks and saves them.
 
 ### Body
 1. Features
@@ -36,6 +36,14 @@ This project references: [https://github.com/ahuimanu/iscap-ionic-workshop](http
 2. Code snippets
 ```
 3. Explanations of code
+
+#### How to push a new project to Ionic and get it ready for launch
+1. Go to https://apps.ionic.io/apps/ (the Ionicframework site, and log in)
+2. View this http://docs.ionic.io/services/package/
+
+ionic upload
+ionic package build android --profile Tutorial
+ionic package list
 
 ### Helpful links
 1. Links that help explain the project
